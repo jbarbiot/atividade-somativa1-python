@@ -1,28 +1,32 @@
 name: CD
 
 on:
-  pull_request:
+  push:
       branches:
             - main
-              push:
-                  branches:
-                        - main
+                  - develop
+                        - feature/**
+                              - feature-*
+                                pull_request:
+                                    branches:
+                                          - main
+                                            workflow_dispatch:
 
-                        jobs:
-                          docker-build:
-                              runs-on: ubuntu-latest
+                                            jobs:
+                                              docker-build:
+                                                  runs-on: ubuntu-latest
 
-                                  steps:
-                                        - name: Checkout do código
-                                                uses: actions/checkout@v4
+                                                      steps:
+                                                            - name: Checkout do código
+                                                                    uses: actions/checkout@v4
 
-                                                      - name: Configurar Docker Buildx
-                                                              uses: docker/setup-buildx-action@v3
+                                                                          - name: Configurar Docker Buildx
+                                                                                  uses: docker/setup-buildx-action@v3
 
-                                                                    - name: Build da imagem Docker
-                                                                            uses: docker/build-push-action@v6
-                                                                                    with:
-                                                                                              context: .
-                                                                                                        push: false
-                                                                                                                  tags: orientacao-somativa1:latest
-                                                                                                                  
+                                                                                        - name: Build da imagem Docker
+                                                                                                uses: docker/build-push-action@v6
+                                                                                                        with:
+                                                                                                                  context: .
+                                                                                                                            push: false
+                                                                                                                                      tags: orientacao-somativa1:latest
+                                                                                                                                      
