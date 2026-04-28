@@ -1,5 +1,4 @@
 name: Discord Notification
-
 on:
   push:
       branches:
@@ -7,7 +6,6 @@ on:
               pull_request:
                   branches:
                         - main
-
                         jobs:
                           notify:
                               runs-on: ubuntu-latest
