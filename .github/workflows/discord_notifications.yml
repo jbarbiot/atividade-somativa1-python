@@ -1,15 +1,13 @@
 name: Discord Notification
-on:
-  push:
-      branches: [main]
-      jobs:
-        notify:
-            runs-on: ubuntu-latest
-                steps:
-                    - name: Discord Webhook Action
-                          uses: tsickert/discord-webhook@v6.0.0
+on: [push]
+jobs:
+  notify:
+      runs-on: ubuntu-latest
+          steps:
+                - name: Discord Webhook Action
+                        uses: tsickert/discord-webhook@v6.0.0
                                 with:
-                                        webhook-url: "https://webhook.site/0a8fc358-4a65-414a-bc15-1ba3a6007898"
-                                                content: "🚀 Novo commit no repositório **atividade-somativa1-python**!\n\n**Autor:** ${{ github.actor }}\n**Mensagem:** ${{ github.event.head_commit.message }}\n**Link:** ${{ github.event.head_commit.url }}"
+                                          webhook-url: "https://webhook.site/0a8fc358-4a65-414a-bc15-1ba3a6007898"
+                                                    content: "🚀 Novo commit no repositório **atividade-somativa1-python**!\n\n**Autor:** ${{ github.actor }}\n**Mensagem:** ${{ github.event.head_commit.message }}\n**Link:** ${{ github.event.head_commit.url }}"
 
-                                                
+                                                    
